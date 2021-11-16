@@ -2,7 +2,7 @@
 " Description:  Github dark mode color scheme adaption for vimR
 " Author:       lmllr <lm@urlukas.com>
 " Website:      https://github.com/lmllr/github-dark.vim/
-" Last Updated: Sun Nov 14 17:13:57 CET 2021
+" Last Updated: Tue Nov 16 18:55:17 CET 2021
 
 " INFORMATION:
 " `FIXME`: Highlight groups that still need work
@@ -396,3 +396,30 @@ call s:H('SpellRare', s:m, '')
 call s:H('SpellLocal', s:y, '')
 
 " --------------------------------------------------------------------------}}}
+" Vimscript:
+" --------------------------------------------------------------------------{{{
+
+call s:H('VimCommentTitle', s:b, '')
+call s:H('vimFuncName', s:m, '')
+call s:H('vimOper', s:r, '')
+call s:H('vimIsCommand', s:b, '')
+call s:H('vimParenSep', s:fg1, '')
+call s:H('vimSep', s:fg1, '')
+call s:H('vimNotFunc', s:r, '')
+call s:H('vimFunction', s:m, '')
+call s:H('vimUserFunc', s:m, '')
+call s:H('vimUsrCmd', s:c, '')
+call s:H('vimLet', s:r, '')
+call s:H('vimVar', s:fg1, '')
+call s:H('vimEnvvar', s:b, '')
+call s:H('vimSetEqual', s:r, '')
+call s:H('vimOption', s:b, '')
+call s:H('vimHiCtermFgBg', s:fg1, '')
+call s:H('vimHiGuiFgBg', s:fg1, '')
+call s:H('vimHiAttrib', s:b, '')
+call s:H('vimHiKeyList', s:r, '')
+call s:H('vimContinue', s:fg1, '')
+call s:H('vimHighlight', s:b, '')
+call s:H('vimHiBang', s:r, '')
+
+" -----------------------------------------------------------------------------}}}
