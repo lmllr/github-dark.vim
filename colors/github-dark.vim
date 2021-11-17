@@ -1,6 +1,6 @@
-" Name:         github-darkR.vim
+" Name:         github-dark.vim
 " Description:  Github dark mode color scheme adaption for vimR
-" Author:       lmllr <lm@urlukas.com>
+" Author:       Lukas Moeller <lm@urlukas.com>
 " Website:      https://github.com/lmllr/github-dark.vim/
 " Last Updated: Tue Nov 16 18:55:17 CET 2021
 
@@ -51,13 +51,13 @@ endif
 
 set background=dark
 
-let g:colors_name = 'new-stylo-mahylo'
+let g:colors_name = 'github-dark'
 
 " --------------------------------------------------------------------------}}}
 " INIT COLORS:
 " --------------------------------------------------------------------------{{{
 
-let s:n     = 'NONE'
+let s:n = 'NONE'
 
 if has('gui_running')
   let s:bg1  = ['#0D1117', s:n]
@@ -124,7 +124,7 @@ function! s:H(g, fg, bg, ...)
   endif
 
   let hi = [
-    \ 'highlight ' . a:g,
+    \ 'highlight! ' . a:g,
     \ 'guifg=' . fg[0], 'ctermfg=' . fg[1],
     \ 'guibg=' . bg[0], 'ctermbg=' . bg[1],
     \ 'gui=' . attr[0], 'cterm=' . attr[1],
@@ -136,7 +136,6 @@ function! s:H(g, fg, bg, ...)
     let hi = add(hi, 'guisp=' . sp)
   endif
 
-  "echo join(hi, ' ')
   execute join(hi, ' ')
 endfunction
 
@@ -399,6 +398,10 @@ call s:H('SpellLocal', s:y, '')
 " Vimscript:
 " --------------------------------------------------------------------------{{{
 
+call s:H('vimOperParen', s:b, '')
+call s:H('vimSet', s:b, '')
+call s:H('vimSynType', s:b, '')
+call s:H('vimCommand', s:r, '')
 call s:H('VimCommentTitle', s:b, '')
 call s:H('vimFuncName', s:m, '')
 call s:H('vimOper', s:r, '')
