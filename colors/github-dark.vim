@@ -1,8 +1,8 @@
 " Name:         github-dark.vim
-" Description:  Github dark mode color scheme adaption for vimR
+" Description:  Github dark mode color scheme adaption for vim
 " Author:       Lukas Moeller <lm@urlukas.com>
 " Website:      https://github.com/lmllr/github-dark.vim/
-" Last Updated: Tue Nov 16 18:55:17 CET 2021
+" Last Updated: Sat Nov 20 19:14:10 CET 2021
 
 " INFORMATION:
 " `FIXME`: Highlight groups that still need work
@@ -426,3 +426,13 @@ call s:H('vimHighlight', s:b, '')
 call s:H('vimHiBang', s:r, '')
 
 " -----------------------------------------------------------------------------}}}
+" Help Section:
+" --------------------------------------------------------------------------{{{
+
+call s:H('helpHeader', s:r, '')
+call s:H('helpSectionDelim', s:r, '')
+call s:H('helpHyperTextJump', s:c, '')
+call s:H('helpVim', s:m, '')
+
+" -----------------------------------------------------------------------------}}}
+
