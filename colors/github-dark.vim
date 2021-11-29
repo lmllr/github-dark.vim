@@ -2,13 +2,19 @@
 " Description:  Github dark mode color scheme adaption for vim
 " Author:       Lukas Moeller <lm@urlukas.com>
 " Website:      https://github.com/lmllr/github-dark.vim/
-" Last Updated: Sat Nov 20 19:14:10 CET 2021
+" Last Updated: Mon Nov 29 19:38:53 CET 2021
 
 " INFORMATION:
+" --------------------------------------------------------------------------{{{
+
+" :help highlight-groups
+" :help hl-<highlight-group-name>
+
 " `FIXME`: Highlight groups that still need work
 " `TODO`: Needs adjusment/improvement
 " `XXX`: General thoughts
 
+" --------------------------------------------------------------------------}}}
 " COLOR TABLE:
 " --------------------------------------------------------------------------{{{
 
@@ -124,7 +130,7 @@ function! s:H(g, fg, bg, ...)
   endif
 
   let hi = [
-    \ 'highlight! ' . a:g,
+    \ 'highlight ' . a:g,
     \ 'guifg=' . fg[0], 'ctermfg=' . fg[1],
     \ 'guibg=' . bg[0], 'ctermbg=' . bg[1],
     \ 'gui=' . attr[0], 'cterm=' . attr[1],
@@ -244,7 +250,7 @@ call s:H('VertSplit', s:fg2, '', s:rev)
 
 " FIXME: select different color when not using a `StatusLine`
 " status line of current window
-call s:H('StatusLine', s:fg1, '', s:rev)
+call s:H('StatusLine', s:fg1, s:bg2)
 
 " status lines of not-current windows
 call s:H('StatusLineNC', s:bg1, '', s:rev)
@@ -343,6 +349,19 @@ call s:H('DiffDelete', s:r, '', s:rev)
 call s:H('DiffText', s:y, '', s:rev)
 
 " --------------------------------------------------------------------------}}}
+" TABS:
+" --------------------------------------------------------------------------{{{
+
+" tab pages line, not active tab page label
+call s:H('Tabline', s:fg2, s:bg1)
+
+" tab pages line, where there are no labels
+call s:H('TablineFill', '', s:bg1)
+
+" tab pages line, active tab page label
+call s:H('TablineSel', s:r, s:bg2)
+
+" --------------------------------------------------------------------------}}}
 " FOLD:
 " --------------------------------------------------------------------------{{{
 
@@ -398,41 +417,54 @@ call s:H('SpellLocal', s:y, '')
 " Vimscript:
 " --------------------------------------------------------------------------{{{
 
-call s:H('vimOperParen', s:b, '')
-call s:H('vimSet', s:b, '')
-call s:H('vimSynType', s:b, '')
-call s:H('vimCommand', s:r, '')
-call s:H('VimCommentTitle', s:b, '')
-call s:H('vimFuncName', s:m, '')
-call s:H('vimOper', s:r, '')
-call s:H('vimIsCommand', s:b, '')
-call s:H('vimParenSep', s:fg1, '')
-call s:H('vimSep', s:fg1, '')
-call s:H('vimNotFunc', s:r, '')
-call s:H('vimFunction', s:m, '')
-call s:H('vimUserFunc', s:m, '')
-call s:H('vimUsrCmd', s:c, '')
-call s:H('vimLet', s:r, '')
-call s:H('vimVar', s:fg1, '')
-call s:H('vimEnvvar', s:b, '')
-call s:H('vimSetEqual', s:r, '')
-call s:H('vimOption', s:b, '')
-call s:H('vimHiCtermFgBg', s:fg1, '')
-call s:H('vimHiGuiFgBg', s:fg1, '')
-call s:H('vimHiAttrib', s:b, '')
-call s:H('vimHiKeyList', s:r, '')
-call s:H('vimContinue', s:fg1, '')
-call s:H('vimHighlight', s:b, '')
-call s:H('vimHiBang', s:r, '')
+hi link vimOperParen Identifier
+hi link vimSet vimOperParen
+hi link vimSynType vimOperParen
+hi link vimCommand Statement
+hi link vimCommentTitle vimOperParen
+hi link vimFuncName Underlined
+hi link vimOper vimCommand
+hi link vimIsCommand vimOperParen
+hi link vimSep Title
+hi link vimParenSep vimSep
+hi link vimNotFunc vimCommand
+hi link vimFunction vimFuncName
+hi link vimUserFunc vimFuncName
+hi link vimUsrCmd Constant
+hi link vimLet vimCommand
+hi link vimVar vimSep
+hi link vimEnvvar vimOperParen
+hi link vimSetEqual vimCommand
+hi link vimOption vimOperParen
+hi link vimHiCtermFgBg Title
+hi link vimHiGuiFgBg Title
+hi link vimHiAttrib vimCommand
+hi link vimHiKeyList vimCommand
+hi link vimContinue Title
+hi link vimHighlight vimOperParen
+hi link vimHiBang vimCommand
 
 " -----------------------------------------------------------------------------}}}
 " Help Section:
 " --------------------------------------------------------------------------{{{
 
-call s:H('helpHeader', s:r, '')
-call s:H('helpSectionDelim', s:r, '')
-call s:H('helpHyperTextJump', s:c, '')
-call s:H('helpVim', s:m, '')
+hi link helpHeader Statemnt
+hi link helpSectionDelim helpHeader
+hi link helpHyperTextJump Constant
+hi link helpVim VimFuncName
 
 " -----------------------------------------------------------------------------}}}
+" Coc.nvim:
+" --------------------------------------------------------------------------{{{
 
+hi link CocErrorSign Statement
+hi link CocWarningSign PreProc
+hi link CocInfoSign CocWarningSign
+hi link CocHintSign Identifier
+hi link CocWarningVirtualText CocWarningSign
+
+if has("gui_vimr")
+  call s:H('CocUnderline', s:fg1, '', s:uc, 'red')
+endif
+
+" -----------------------------------------------------------------------------}}}
