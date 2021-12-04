@@ -97,6 +97,27 @@ else
   let s:uc   = [s:n, s:n]
 endif
 
+" Setup Terminal Colors For Neovim:
+
+if has('gui_vimr') || has('nvim')
+  let g:terminal_color_0 = s:bg1[0]
+  let g:terminal_color_1 = s:r[0]
+  let g:terminal_color_2 = s:g[0]
+  let g:terminal_color_3 = s:y[0]
+  let g:terminal_color_4 = s:b[0]
+  let g:terminal_color_5 = s:m[0]
+  let g:terminal_color_6 = s:c[0]
+  let g:terminal_color_7 = s:fg1[0]
+  let g:terminal_color_8 = s:bg2[0]
+  let g:terminal_color_9 = s:r[0]
+  let g:terminal_color_10 = s:g[0]
+  let g:terminal_color_11 = s:y[0]
+  let g:terminal_color_12 = s:b[0]
+  let g:terminal_color_13 = s:m[0]
+  let g:terminal_color_14 = s:c[0]
+  let g:terminal_color_15 = s:fg2[0]
+endif
+
 " --------------------------------------------------------------------------}}}
 " HIGHLIGHT FUNC:
 " --------------------------------------------------------------------------{{{
@@ -443,17 +464,20 @@ hi link vimHiKeyList vimCommand
 hi link vimContinue Title
 hi link vimHighlight vimOperParen
 hi link vimHiBang vimCommand
+hi link vimHiGroup PreProc
+hi link vimGroup vimHiGroup
+hi link vimHiLink vimOperParen
 
-" -----------------------------------------------------------------------------}}}
+" --------------------------------------------------------------------------}}}
 " Help Section:
 " --------------------------------------------------------------------------{{{
 
-hi link helpHeader Statemnt
+hi link helpHeader Statement
 hi link helpSectionDelim helpHeader
 hi link helpHyperTextJump Constant
 hi link helpVim VimFuncName
 
-" -----------------------------------------------------------------------------}}}
+" --------------------------------------------------------------------------}}}
 " Coc.nvim:
 " --------------------------------------------------------------------------{{{
 
@@ -466,5 +490,4 @@ hi link CocWarningVirtualText CocWarningSign
 if has("gui_vimr")
   call s:H('CocUnderline', s:fg1, '', s:uc, 'red')
 endif
-
-" -----------------------------------------------------------------------------}}}
+" --------------------------------------------------------------------------{{{
